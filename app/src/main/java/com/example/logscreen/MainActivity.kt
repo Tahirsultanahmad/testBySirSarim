@@ -21,6 +21,8 @@ class MainActivity : ComponentActivity() {
             TableItem("Asif","1222")
         )
         viewModel.updateTableData(newData)
+        viewModel.onButtonClick()
+
 
 
     }

@@ -22,7 +22,10 @@ fun TableForm(viewModel: MyViewModel) {
     Column {
         // Table header
         Row(Modifier.fillMaxWidth()) {
-            Text(text = "Name", modifier = Modifier.weight(1f).padding(top = 10.dp, start = 30.dp))
+            Text(
+                text = "Name",
+                modifier = Modifier.weight(1f).padding(top = 10.dp, start = 30.dp)
+            )
             Text(
                 text = "Number",
                 modifier = Modifier.weight(1f).padding(top = 10.dp, start = 20.dp)
@@ -31,41 +34,39 @@ fun TableForm(viewModel: MyViewModel) {
 
         // Table rows
         tableData.forEach { item ->
-                        Row(Modifier.fillMaxWidth()) {
-                                  Text(text = item.name, modifier = Modifier.weight(1f))
-                                  Text(text = item.number, modifier = Modifier.weight(1f))
-                              }
-                        }
-            Row(
-                modifier = Modifier.fillMaxSize()
-                    .wrapContentHeight(Alignment.Bottom)
-                    .padding(bottom = 10.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+            Row(Modifier.fillMaxWidth()) {
+                Text(text = item.name, modifier = Modifier.weight(1f))
+                Text(text = item.number, modifier = Modifier.weight(1f))
+            }
+        }
+        Row(
+            modifier = Modifier.fillMaxSize()
+                .wrapContentHeight(Alignment.Bottom)
+                .padding(bottom = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(
+                onClick = ({ viewModel.onButtonClick() }),
+                modifier = Modifier.fillMaxWidth(0.5f)
+                    .padding(26.dp)
+                    .border(2.dp, MaterialTheme.colors.secondary)
+                    .background(MaterialTheme.colors.primary)
+                    .padding(10.dp)
             ) {
-                Button(onClick = ({
-                                       viewModel.onButtonClick()
-                                  }),
-                                         modifier = Modifier.fillMaxWidth(0.5f)
-                                         .padding(26.dp)
-                                         .border(2.dp, MaterialTheme.colors.secondary)
-                                         .background(MaterialTheme.colors.primary)
-                                         .padding(10.dp)
-                     ) {
-                                         Text(text = "SignIn")
+                Text(text = "SignIn")
 
-                       }
-                              Button(modifier = Modifier.fillMaxWidth(1f)
-                             .padding(26.dp)
-                             .border(2.dp, MaterialTheme.colors.secondary)
-                             .background(MaterialTheme.colors.primary)
-                             .padding(10.dp),
-                             onClick = {
-                                       viewModel.onButtonClick()
-                                       })
-                              {
-                                 Text(text = "SignUp")
-                              }
-                }
+            }
+            Button(
+                onClick = ({ viewModel.onButtonClick() }),
+                modifier = Modifier.fillMaxWidth(1f)
+                    .padding(26.dp)
+                    .border(2.dp, MaterialTheme.colors.secondary)
+                    .background(MaterialTheme.colors.primary)
+                    .padding(10.dp)
+            ) {
+                Text(text = "SignUp")
+            }
         }
     }
+}
